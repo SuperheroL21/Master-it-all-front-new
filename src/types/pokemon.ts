@@ -11,6 +11,8 @@ export interface Pokemon {
   image: string;
   dexNumber: string;
   types: PokemonType[];
+    classification: string;
+    height: number;
   // STUDENT TODO: Add `classification: string`
   // STUDENT TODO: Add `height: PokemonMeasurement`
   // STUDENT TODO: Add `weight: PokemonMeasurement`
