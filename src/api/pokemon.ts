@@ -1,6 +1,6 @@
 import { API_BASE_URL } from "../constants/api";
 import { Pokemon, PokemonResponse } from "../types/pokemon";
-const API_URL = "http://localhost:3000"; 
+const API_URL = "http://localhost:3000";
 
 const DEX_NUMBERS: Record<string, string> = {
   Bulbasaur: "001",
@@ -9,19 +9,17 @@ const DEX_NUMBERS: Record<string, string> = {
 };
 
 export const fetchPokemon = async (): Promise<Pokemon[]> => {
-  const response = await fetch(`${API_BASE_URL}/api/pokemon`);
+  const response = await fetch(`${API_URL}/api/pokemon`);
+  const data = await response.json();
 
-  if (!response.ok) {
-    throw new Error("Failed to load Pokemon data");
-  }
-
-  const data = (await response.json()) as PokemonResponse;
-
-  return data.pokemon.map((pokemon) => ({
+  return data.pokemon.map((pokemon: any) => ({
     ...pokemon,
-    dexNumber: DEX_NUMBERS[pokemon.name] ?? "???",
+    dexNumber: DEX_NUMBERS[pokemon.name] || "???",
+    classification: pokemon.classification || "Unknown",
+    height: pokemon.height || "Unknown",
   }));
-}
+};
+
 
 
 
