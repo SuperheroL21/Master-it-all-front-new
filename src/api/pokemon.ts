@@ -1,5 +1,6 @@
 import { API_BASE_URL } from "../constants/api";
 import { Pokemon, PokemonResponse } from "../types/pokemon";
+const API_URL = "http://localhost:3000"; 
 
 const DEX_NUMBERS: Record<string, string> = {
   Bulbasaur: "001",
@@ -20,4 +21,7 @@ export const fetchPokemon = async (): Promise<Pokemon[]> => {
     ...pokemon,
     dexNumber: DEX_NUMBERS[pokemon.name] ?? "???",
   }));
-};
+}
+
+
+
