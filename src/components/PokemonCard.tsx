@@ -29,9 +29,7 @@ export default function PokemonCard({ pokemon, cardWidth }: PokemonCardProps) {
         {pokemon.classification}
       </Text>
 
-           <Text style={styles.classification} numberOfLines={1} adjustsFontSizeToFit>
-        {pokemon.height}
-      </Text>
+
 
       <View style={styles.typeBadges}>
         {pokemon.types.map((type) => (

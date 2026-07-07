@@ -9,6 +9,9 @@ const DEX_NUMBERS: Record<string, string> = {
 };
 
 export const fetchPokemon = async (): Promise<Pokemon[]> => {
+
+  console.log(`${API_BASE_URL}/api/pokemon`);
+  
   const response = await fetch(`${API_BASE_URL}/api/pokemon`);
 
   if (!response.ok) {
@@ -17,6 +20,9 @@ export const fetchPokemon = async (): Promise<Pokemon[]> => {
 
   const data = (await response.json()) as PokemonResponse;
 
+
+  console.log("Fetched Pokemon data:", data);
+  
   return data.pokemon.map((pokemon) => ({
     ...pokemon,
     dexNumber: DEX_NUMBERS[pokemon.name] ?? "???",
